@@ -17,9 +17,7 @@ use ApiPlatform\Metadata\Post;
         'groups' => ['lead:write']
     ],
     operations:[
-        new Post (
-            denormalizationContext: ['groups' => ['lead:write']]
-        )
+        new Post ()
     ],
     extraProperties: [
         'standard_put' => false,
