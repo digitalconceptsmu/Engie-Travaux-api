@@ -49,6 +49,11 @@ class Lead
     #[ORM\Column]
     private ?bool $consent = null;
 
+    public function __construct()
+    {
+       $this->consent = true;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
