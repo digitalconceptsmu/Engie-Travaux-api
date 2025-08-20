@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  php:
+    container_name: engietravaux_php
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: engietravaux_mysql
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  caddy:
+    container_name: engietravaux_caddy
+    image: caddy:2-alpine
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./:/var/www
+    ports:
+      - 8080:80
+    depends_on:
+      - php
+
+volumes:
+  mysql_data:
