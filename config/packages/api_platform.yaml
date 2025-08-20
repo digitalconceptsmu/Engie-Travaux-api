@@ -1,7 +1,27 @@
 api_platform:
-    title: Hello API Platform
+    title: EngieTravaux API
     version: 1.0.0
+    formats:
+        jsonld: [ 'application/ld+json' ]
+        json: [ 'application/json' ]
     defaults:
         stateless: true
+        pagination_client_items_per_page: true
         cache_headers:
             vary: ['Content-Type', 'Authorization', 'Origin']
+        extra_properties:
+            standard_put: true
+            rfc_7807_compliant_errors: true
+    collection:
+        pagination:
+            items_per_page_parameter_name: limit
+    swagger:
+        api_keys:
+            JWT:
+                name: Authorization
+                type: header
+
+when@prod:
+    api_platform:
+        enable_swagger_ui: false
+        enable_docs: true
