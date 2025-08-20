@@ -25,6 +25,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     ]
 )]
 #[ORM\Table(name: '`lead`')]
+#[ORM\HasLifecycleCallbacks]
 class Lead
 {
     use TimestampableEntity;
