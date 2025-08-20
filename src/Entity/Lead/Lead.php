@@ -7,6 +7,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Shared\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\Post;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: LeadRepository::class)]
 #[ApiResource(
@@ -34,18 +35,23 @@ class Lead
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['lead:write'])]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['lead:write'])]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['lead:write'])]
     private ?string $email = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['lead:write'])]
     private ?string $phone = null;
 
     #[ORM\Column]
+    #[Groups(['lead:write'])]
     private ?bool $consent = null;
 
     public function __construct()
