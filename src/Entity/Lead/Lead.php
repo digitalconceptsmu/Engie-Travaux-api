@@ -6,6 +6,7 @@ use App\Repository\Lead\LeadRepository;
 use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Shared\TimestampableEntity;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\Post;
 
 #[ORM\Entity(repositoryClass: LeadRepository::class)]
 #[ApiResource(
