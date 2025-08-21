@@ -2,6 +2,7 @@
 
 namespace App\Entity\Lead;
 
+use App\ApiPlatform\State\Processor\Lead\LeadRegistrationProcessor;
 use App\Repository\Lead\LeadRepository;
 use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Shared\TimestampableEntity;
@@ -18,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'groups' => ['lead:write']
     ],
     operations:[
-        new Post ()
+        new Post (processor: LeadRegistrationProcessor::class)
     ],
     extraProperties: [
         'standard_put' => false,
