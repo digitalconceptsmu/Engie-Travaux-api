@@ -6,6 +6,7 @@ namespace App\ApiPlatform\State\Processor\Lead;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -14,6 +15,7 @@ class LeadRegistrationProcessor implements ProcessorInterface
     private const AUTH_TOKEN = 'FtSnqpNImRxYdHBxsehyHHCePbDcCOsptF3s4qkYDcRRHvH3veq8w8n1wKLKn0vV6LRgyZsF82BpA0kv2iFYIiPYup0f2PyZ8OH9DEYLwPIWbe2M8R3rzc2CBsiGTnwk';
 
     public function __construct(
+        #[Autowire(service: 'api_platform.doctrine.orm.state.persist_processor')]
         private ProcessorInterface $persistProcessor,
         private RequestStack $requestStack
     ) {}
